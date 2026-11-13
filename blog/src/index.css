@@ -1,0 +1,43 @@
+:root {
+  --light: #FFFFFF;
+  --dark: #000000;
+}
+/* add to the bottom of index.css */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+ 
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+section {
+  animation: fade-up 0.8s ease-out backwards;
+}
+ 
+/* stagger: each card waits a little longer than the one before */
+.card {
+  animation: fade-up 0.6s ease-out backwards;
+  animation-delay: calc(var(--i) * 0.15s);
+  transition: transform 0.2s;
+}
+ 
+.card:hover {
+  transform: rotate(-2deg) scale(1.03);
+}
+ 
+/* some people get sick from motion, so let them opt out */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
